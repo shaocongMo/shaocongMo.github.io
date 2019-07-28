@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Hello My Blog"
-subtitle:   "create my blog and test"
+title:      "8 string to integer atoi"
+subtitle:   "leetcode"
 date:       2019-07-28 17:00:00
 author:     "Shaocong"
 header-img: "img/leetcode-bg.jpg"
