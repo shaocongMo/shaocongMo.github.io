@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "8 string to integer atoi"
+title:      "8.string to integer atoi"
 subtitle:   "leetcode"
 date:       2019-07-28 17:00:00
 author:     "Shaocong"
