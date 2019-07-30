@@ -61,12 +61,13 @@ func inorderTraversal(root *TreeNode, lastNode *TreeNode) (bool, *TreeNode) {
 
 ![img](/img/in-post/vaild_BST.png)
 
-每个子树节点范围：
-5: MinInt64 ~ MaxInt64
-1: MinInt64 ~ 5
-7: 5 ~ MaxInt64
-3: 5 ~ 6
-8: 7 ~ MaxInt64
+每个子树节点范围:
+
+* 5: MinInt64 ~ MaxInt64
+* 1: MinInt64 ~ 5
+* 7: 5 ~ MaxInt64
+* 3: 5 ~ 6
+* 8: 7 ~ MaxInt64
 
 对树进行BFS遍历，判断每个节点值是否在合理范围内，若不在则停止遍历
 
