@@ -79,7 +79,7 @@ dp[l][r]: 第 l 位至第 r 位是否为回文串
 
 状态方程:
 
-> dp[l][r] = s[l] == s[r] && ( r - l <= 2 || dp[l + 1][r - 1] )
+> dp[l][r] = s[l] == s[r] and ( r - l <= 2 or dp[l + 1][r - 1] )
 
 ```golang
 func longestPalindromeDP(s string) string {
