@@ -63,3 +63,44 @@ func longestPalindromeCenter(s string, left, right int) (string, int) {
 
 * 时间复杂度：O(N^2)
 * 空间复杂度：O(1)
+
+#### 动态规划
+
+状态：
+
+dp[l][r]: 第 l 位至第 r 位是否为回文串
+
+状态转移：
+
+字串情况分析：
+* 1、当原字符串的元素个数为 3 个的时候，如果左右边界相等，那么去掉它们以后，只剩下 1 个字符，它一定是回文串，故原字符串也一定是回文串；
+* 2、当原字符串的元素个数为 2 个的时候，如果左右边界相等，那么去掉它们以后，只剩下 0 个字符，显然原字符串也一定是回文串。
+* 结论: 子串去除左右边界后若 r - l <= 2 时 一定位回文串
+
+状态方程:
+
+dp[l][r] = s[l] == s[r] && ( r - l <= 2 || dp[l + 1][r - 1] )
+
+
+```golang
+func longestPalindromeDP(s string) string {
+    dp := make([][]bool, len(s))
+    for i := 0; i < len(s); i++ {
+        dp[i] = make([]bool, len(s))
+    }
+    max_len, subStr := 0, ""
+    for r := 0; r < len(s); r++ {
+        for l := 0; l <= r; l++ {
+            if s[l] == s[r] && (r - l <= 2 || dp[l + 1][r - 1]) {
+                dp[l][r] = true
+                cur_len := r - l + 1
+                if cur_len > max_len {
+                    max_len = cur_len
+                    subStr = s[l:r + 1]
+                }
+            }
+        }
+    }
+    return subStr
+}
+```
