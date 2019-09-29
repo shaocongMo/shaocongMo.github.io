@@ -103,3 +103,42 @@ func longestPalindromeDP(s string) string {
     return subStr
 }
 ```
+
+#### 马拉车算法
+
+[题解网址](https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zhong-xin-kuo-san-dong-tai-gui-hua-by-liweiwei1419/)
+
+```golang
+func longestPalindromeManacher(s string) string {
+    sDivided := make([]byte, len(s) * 2 + 1)
+    p := make([]int, len(s) * 2 + 1)
+    for i := 0; i < len(sDivided); i++ {
+        if i % 2 == 0 {
+            sDivided[i] = '#'
+        } else {
+            sDivided[i] = s[i / 2]
+        }
+    }
+
+    id, mx := 0, 0
+    // id ：从开始到现在使用“中心扩散法”能得到的“最长回文子串”的中心的位置；
+    // mx：从开始到现在使用“中心扩散法”能得到的“最长回文子串”能延伸到的最右端的位置。容易知道 mx = id + p[id]
+    for i := 0; i < len(sDivided); i++ {
+        if i < mx {
+            p[i] = p[id - i]
+        } else {
+            for j := 1; i > mx && i - j >= 0 && i + j < len(sDivided) && sDivided[i - j] == sDivided[i + j]; j++ {
+                p[i] += 1
+            }
+        }
+        if p[i] > mx {
+            mx = p[i]
+            id = i
+        }
+    }
+    if mx % 2 == 0 {
+        return s[id / 2 - mx / 2: id / 2 + mx / 2]
+    }
+    return s[id / 2 - mx / 2: id / 2 + mx / 2 + 1]
+}
+```
