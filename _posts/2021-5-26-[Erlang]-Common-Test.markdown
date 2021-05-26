@@ -66,7 +66,9 @@ check(_) -> 1.
 ```
 
 代码覆盖测试配置
+
 cover.spec 里面的路径相对于配置文件路径
+
 进行代码覆盖测试前提，编译的代码需要加上debug_info参数
 ```
 {level, details}.
@@ -74,9 +76,13 @@ cover.spec 里面的路径相对于配置文件路径
 ```
 
 启动测试，测试完成后会生成html文件到demo目录
+
 -dir 路径相对于跟目录
+
 -cover 路径相对于根目录
+
 -logdir 路径相对于跟目录
+
 -pa 路径相对于输出目录（logdir）
 ```bash
 mkdir demo
