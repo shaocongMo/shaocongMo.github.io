@@ -38,7 +38,7 @@ test(_) ->
 HugeSet1 = ordsets:from_list(HugeList1),
 HugeSet2 = ordsets:from_list(HugeList2),
 ordsets:subtract(HugeSet1, HugeSet2)
-%% 或者
+
 Set = gb_sets:from_list(HugeList2),
 [E || E <- HugeList1, not gb_sets:is_element(E, Set)]
 ```
