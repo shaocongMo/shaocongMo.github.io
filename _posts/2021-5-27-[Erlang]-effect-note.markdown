@@ -33,13 +33,12 @@ test(_) ->
 #### 运算符"--"
 * "--"运算符的复杂度与其操作数长度的乘积成正比。这意味着如果运算符的两个操作数都是长列表，则运算符非常慢
 * 使用STDLIB中的模块ordsets
+
 ```erlang
 HugeSet1 = ordsets:from_list(HugeList1),
 HugeSet2 = ordsets:from_list(HugeList2),
 ordsets:subtract(HugeSet1, HugeSet2)
-
 %% 或者
-
 Set = gb_sets:from_list(HugeList2),
 [E || E <- HugeList1, not gb_sets:is_element(E, Set)]
 ```
