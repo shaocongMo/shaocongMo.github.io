@@ -70,16 +70,7 @@ Set = gb_sets:from_list(HugeList2),
 cprof:start(),R=calendar:day_of_the_week(1896,4,27),cprof:pause(),R.
 
 cprof:analyse(calendar).
-% {calendar,9,
-%           [{{calendar,df,2},1},
-%            {{calendar,dm,1},1},
-%            {{calendar,dy,1},1},
-%            {{calendar,last_day_of_the_month1,2},1},
-%            {{calendar,last_day_of_the_month,2},1},
-%            {{calendar,is_leap_year1,1},1},
-%            {{calendar,is_leap_year,1},1},
-%            {{calendar,day_of_the_week,3},1},
-%            {{calendar,date_to_gregorian_days,3},1}]}
+
 cprof:stop().
 
 fprof:start(),
