@@ -59,10 +59,10 @@ Set = gb_sets:from_list(HugeList2),
 ```
 
 #### lists:flatten/1
-避免使用lists:flatten/1,该方法会构造一个全新的列表，甚至比"++"运算符还要糟糕
+避免使用"lists:flatten/1",该方法会构造一个全新的列表，甚至比"++"运算符还要糟糕
 * 将数据发送到端口时。端口理解深度列表，因此在将列表发送到端口之前，没有理由将其扁平化。
-* 调用接受深列表的BIF时，如list_to_binary/1或iolist_to_binary/1...
-* 当您知道您的列表只有一级深度时，可以使用lists:append/1...
+* 调用接受深列表的BIF时，如"list_to_binary/1"或"iolist_to_binary/1"
+* 当您知道您的列表只有一级深度时，可以使用"lists:append/1"
 
 #### 性能排查demo
 
@@ -149,15 +149,15 @@ eprof:log("pid1478.analyze").
 eprof:analyze().
 ```
 
-* 对分析结果查看，得知部分ets:select/2消耗时间较长，于是对查询结果加入缓存（k/v cache），下次查询直接冲缓存中获取
+* 对分析结果查看，得知部分"ets:select/2"消耗时间较长，于是对查询结果加入缓存（k/v cache），下次查询直接冲缓存中获取
 * k/v cache 可独立进程，将系统中的缓存集中存放，避免各自进程独自处理存放，加大内存开销
 
 ###### 加入缓存处理后，cup占用依旧高居不下
 
 于是对进程进行分析发现，存在许多废弃没有关闭的进程。对进程代码修正，加入自动关闭进程功能，cup占用就降低了。
 
-在监督树下的用 supervisor:terminate_child(Sup, ID) 关闭
-关闭后需清理监督树的子进程监督信息 supervisor:delete_child(Sup, ID) (看源码 terminate_child 后是有清除数据的，但是没起作用，待查)
+在监督树下的用 "supervisor:terminate_child(Sup, ID)" 关闭
+关闭后需清理监督树的子进程监督信息 "supervisor:delete_child(Sup, ID)" (看源码 terminate_child 后是有清除数据的，但是没起作用，待查)
 
 非监督树下的进程返回 {stop, normal, State}
 
