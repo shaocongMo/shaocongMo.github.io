@@ -2,7 +2,7 @@
 layout:     post
 title:      "[Erlang] Astar 寻路算法"
 subtitle:   "Erlang"
-date:       2021-06-02 20:00:00
+date:       2021-06-06 20:00:00
 author:     "Shaocong"
 header-img: "img/leetcode-bg.jpg"
 catalog: true
