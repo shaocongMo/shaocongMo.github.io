@@ -63,6 +63,9 @@ Set = gb_sets:from_list(HugeList2),
 * 调用接受深列表的BIF时，如"list_to_binary/1"或"iolist_to_binary/1"
 * 当您知道您的列表只有一级深度时，可以使用"lists:append/1"
 
+#### erlang:now 和 erlang:timestamp 区别
+erlang:now在获取时间的时候需要上erts_timeofday_mtx锁，而os:timestamp则简单的调用sys_gettimeofday函数来获取，并且在linux下gettimeofday这个系统调用由于使用频度非常高，系统已经将之vdso化了，也就说去取这个时间等同于读取一个字长的内存的代价而已。
+
 #### 性能排查demo
 
 ```erlang
