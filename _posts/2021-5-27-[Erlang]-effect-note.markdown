@@ -66,6 +66,11 @@ Set = gb_sets:from_list(HugeList2),
 #### erlang:now 和 erlang:timestamp 区别
 erlang:now在获取时间的时候需要上erts_timeofday_mtx锁，而os:timestamp则简单的调用sys_gettimeofday函数来获取，并且在linux下gettimeofday这个系统调用由于使用频度非常高，系统已经将之vdso化了，也就说去取这个时间等同于读取一个字长的内存的代价而已。
 
+#### 获取进程调用栈
+```erlang
+file:write_file("stack.info", io_lib:format("~s~n", [element(2, process_info(Pid, backtrace))]))
+```
+
 #### 性能排查demo
 
 ```erlang
